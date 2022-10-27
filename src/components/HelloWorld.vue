@@ -1,32 +1,43 @@
 <script>
 import axios from 'axios';
-export default{
-  data() {
-        return {
-            Role_ID: '',
-            Role_Name:'',
-            Role_Status: 'Active',
-            role_desc: '',
-            Department: '',
-            key_tasks: '',
-            error_message:[],
-            error_in_html:'',
+export default {
+    name: 'HelloWorld',  
+    props: {  
+        Role_Status: {
+      type: String,
+      required: true
+    }, 
+    Department: '', 
+    Role_ID: '',
+    Role_Name:'',
+    Role_Status:'',
+    role_desc: '',
+    Department: '',
+    key_tasks: '',
+    error_message:[],
+    error_in_html:'',
+
+    AllUniqueRoles:[],
+    // //modify in sprint 3, will hardcode for the skill (for sprint 2)
+    // skills_required:'00007'
+
+        
+    },
+    data(){
+        return{
+
             numRoleName:50,
             numDepartment:50,
             numrole_desc:225,
             numkey_tasks:225,
-            AllUniqueRoles:[],
-            //modify in sprint 3, will hardcode for the skill (for sprint 2)
-            skills_required:'00007'
-
-        };
+        }
     },
     created(){
         const getAllRoles = 'http://localhost/CopySPM/db/getAllRoles.php'
         axios.get(getAllRoles)
             .then(response => {
                 var AllRoles = response.data;
-                // console.log(AllRoles);
+                console.log(AllRoles);
                 this.getUniqueRoleName(AllRoles);
                 console.log(this.AllUniqueRoles);
             })
@@ -178,7 +189,7 @@ export default{
                     <div class="col-lg-3 col-md-4">
                         <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" id="backBtn"
                         style="border-radius: 20px" onclick="history.back()">Back</button>
-                        <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" 
+                        <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" id = 'submitBTN'
                         style="border-radius: 20px" @click='submitLJRole' >Submit</button>
                         <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" 
                         style="border-radius: 20px">Submit</button>
