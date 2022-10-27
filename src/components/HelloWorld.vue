@@ -3,33 +3,30 @@ import axios from 'axios';
 export default {
     name: 'HelloWorld',  
     props: {  
-        Role_Status: {
-      type: String,
-      required: true
-    }, 
-    Department: '', 
-    Role_ID: '',
-    Role_Name:'',
-    Role_Status:'',
-    role_desc: '',
-    Department: '',
-    key_tasks: '',
-    error_message:[],
-    error_in_html:'',
-
-    AllUniqueRoles:[],
-    // //modify in sprint 3, will hardcode for the skill (for sprint 2)
-    // skills_required:'00007'
-
-        
+        Department: {
+            type: String,
+            default: ""
+        }
+    
     },
     data(){
         return{
-
+            Role_Status: "", 
+            Role_ID: '',
+            Role_Name:'',
+            Role_Status:'',
+            role_desc: '',
+            key_tasks: '',
+            error_message:[],
+            error_in_html:'',
+            AllUniqueRoles:[],
             numRoleName:50,
             numDepartment:50,
             numrole_desc:225,
             numkey_tasks:225,
+                // //modify in sprint 3, will hardcode for the skill (for sprint 2)
+    skills_required:'00007'
+
         }
     },
     created(){

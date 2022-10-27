@@ -7,10 +7,13 @@ describe("HelloWorld", () => {
   it("renders properly", () => {
     const wrapper = mount(HelloWorld,{
       propsData: {
-        Department: 'bar'
+        Department: ''
       }
-    })
     
+    })
+    const byId = wrapper.find('#submitBTN')
+    //CLICK id submitBTN
+    expect(byId.element.id).toBe('submitBTN')    
     expect(wrapper.vm.Department).toBe('bar');
   
   });
