@@ -1,13 +1,13 @@
 import { describe, it, expect } from "vitest";
 
 import { mount } from "@vue/test-utils";
-import HelloWorld from "../HelloWorld.vue";
+import hrCreateRole from "../hrCreateRole.vue";
 
-describe("HelloWorld", () => {
+describe("hrCreateRole", () => {
   it("renders properly", () => {
-    const wrapper = mount(HelloWorld,{
+    const wrapper = mount(hrCreateRole,{
       propsData: {
-        Department: ''
+        Department: 'bar'
       }
     
     })

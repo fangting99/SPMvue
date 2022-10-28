@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'HelloWorld',  
+    name: 'hrCreateRole',  
     props: {  
         Department: {
             type: String,
@@ -81,7 +81,7 @@ export default {
                             'You have created a new role!',
                             'success',
                         ).then(function() {
-                            window.location.href = "hrRole.html";
+                            window.location.href = "hrRole";
                         })
                         this.error_in_html='';
                         this.error_message=[];
@@ -178,116 +178,94 @@ export default {
 </script>
 
 <template>
-  <div class='container-fluid' id="hrCreateSkill">
-        <div class="row" style="background:#6A79F3;">
-            <div class="row position-relative">
-                <div class="row my-5">
-                    <div class="col-lg-9 col-md-8"><img id='logo' src="../Icons/Component 1.png"></div>
-                    <div class="col-lg-3 col-md-4">
-                        <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" id="backBtn"
-                        style="border-radius: 20px" onclick="history.back()">Back</button>
-                        <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" id = 'submitBTN'
-                        style="border-radius: 20px" @click='submitLJRole' >Submit</button>
-                        <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" 
-                        style="border-radius: 20px">Submit</button>
-                    </div>
+    <div class="row" style="background:#6A79F3;">
+        <div class="row position-relative">
+            <div class="row my-5">
+                <div class="col-lg-9 col-md-8"><img id='logo' src="../Icons/Component 1.png"></div>
+                <div class="col-lg-3 col-md-4">
+                    <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" id="backBtn"
+                    style="border-radius: 20px" onclick="history.back()">Back</button>
+                    <button type="button" class="btn btn-light mx-2 px-4 d-lg-inline-block" id = 'submitBTN'
+                    style="border-radius: 20px" @click='submitLJRole' >Submit</button>
+
                 </div>
-                <img src="../Icons/Vector 1.png" alt="background">
-                <p class="h1 position-absolute top-50 start-50 translate-middle" id="Header">
-                    Create a new role:
-                </p>
             </div>
+            <img src="../Icons/Vector 1.png" alt="background">
+            <p class="h1 position-absolute top-50 start-50 translate-middle" id="Header">
+                Create a new role:
+            </p>
         </div>
-        
-        <div class="shadow p-3 mb-5 bg-white rounded" style="margin: auto; width: 90%;">
-            <form class="row g-3 p-2">
-                <div><span style="color:red">* Required</span></div>
-                <div class="col-lg-6 col-md-6">
-                    <h4><label for="inputRole" class="form-label">Role <span style="color:red">*</span></label></h4>
-                    <textarea  v-model="Role_Name" class="form-control" @input ="countRoleName(this.numRoleName)" rows="1"></textarea>
-                    <div style="float: right;">
-                        <span v-if ='numRoleName>=0'>{{numRoleName}}</span>  
-                        <span v-else style="color:red">Exceed Word Limit: {{50-numRoleName}}/50</span> 
-                    </div>
+    </div>
+    
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin: auto; width: 90%;">
+        <form class="row g-3 p-2">
+            <div><span style="color:red">* Required</span></div>
+            <div class="col-lg-6 col-md-6">
+                <h4><label for="inputRole" class="form-label">Role <span style="color:red">*</span></label></h4>
+                <textarea  v-model="Role_Name" class="form-control" @input ="countRoleName(this.numRoleName)" rows="1"></textarea>
+                <div style="float: right;">
+                    <span v-if ='numRoleName>=0'>{{numRoleName}}</span>  
+                    <span v-else style="color:red">Exceed Word Limit: {{50-numRoleName}}/50</span> 
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <h4><label for="inputStatus" class="form-label">Role Status</label></h4>
-                    <select id="inputStatus" class="form-select" v-model="Role_Status">
-                        <option value ='Active'>Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <h4><label for="inputStatus" class="form-label">Role Status</label></h4>
+                <select id="inputStatus" class="form-select" v-model="Role_Status">
+                    <option value ='Active'>Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+            
+            <div class="col-lg-12 col-md-12">
+                <h4><label class="form-label">Role Description</label></h4>
+                <textarea class="form-control" v-model='role_desc' placeholder="Type in role description"  @input ="countrole_desc(this.numrole_desc)" rows = '3'></textarea>
+                <div style="float: right;"> 
+                    <span v-if ='numrole_desc>=0'>{{numrole_desc}}</span>  
+                    <span v-else style="color:red">Exceed Word Limit: {{225-numrole_desc}}/225</span> 
                 </div>
+
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <h4><label for="inputdept" class="form-label">Department <span style="color:red">*</span></label></h4>
+                <select id="inputdept" class="form-select" v-model="Department">
+                    <option disabled selected value> -- Select a Department -- </option>
+                    <option value="CEO">CEO</option>
+                    <option value="Chairman">Chairman</option>
+                    <option value="Finance">Finance</option>
+                    <option value="HR">HR</option>
+                    <option value="Ops">Ops</option>
+                    <option value="Sales">Sales</option>
+                </select>
+                <!-- <textarea  v-model="Department" class="form-control" @input ="countDepartment(this.numDepartment)" rows="1"></textarea>
+                <div style="float: right;">
+                    <span v-if ='numDepartment>=0'>{{numDepartment}}</span>  
+                    <span v-else style="color:red">Exceed Word Limit: {{50-numDepartment}}/50</span> 
+                </div> -->
                 
-                <div class="col-lg-12 col-md-12">
-                    <h4><label class="form-label">Role Description</label></h4>
-                    <textarea class="form-control" v-model='role_desc' placeholder="Type in role description"  @input ="countrole_desc(this.numrole_desc)" rows = '3'></textarea>
-                    <div style="float: right;"> 
-                        <span v-if ='numrole_desc>=0'>{{numrole_desc}}</span>  
-                        <span v-else style="color:red">Exceed Word Limit: {{225-numrole_desc}}/225</span> 
-                    </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <h4><label for="inputRoles" class="form-label">Skills Required (KIV-Sprint 3) <span style="color:red">*</span></label></h4>
+                <input type="text" class="form-control" id="inputRoles" v-model="skills_required">
+            </div>
+            <div class="col-lg-6 col-md-6">
+            </div>
 
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <h4><label for="inputdept" class="form-label">Department <span style="color:red">*</span></label></h4>
-                    <select id="inputdept" class="form-select" v-model="Department">
-                        <option disabled selected value> -- Select a Department -- </option>
-                        <option value="CEO">CEO</option>
-                        <option value="Chairman">Chairman</option>
-                        <option value="Finance">Finance</option>
-                        <option value="HR">HR</option>
-                        <option value="Ops">Ops</option>
-                        <option value="Sales">Sales</option>
-                    </select>
-                    <!-- <textarea  v-model="Department" class="form-control" @input ="countDepartment(this.numDepartment)" rows="1"></textarea>
-                    <div style="float: right;">
-                        <span v-if ='numDepartment>=0'>{{numDepartment}}</span>  
-                        <span v-else style="color:red">Exceed Word Limit: {{50-numDepartment}}/50</span> 
-                    </div> -->
-                    
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <h4><label for="inputRoles" class="form-label">Skills Required (KIV-Sprint 3) <span style="color:red">*</span></label></h4>
-                    <input type="text" class="form-control" id="inputRoles" v-model="skills_required">
-                </div>
-                <div class="col-lg-6 col-md-6">
+            <div class="col-lg-12 col-md-12">
+                <h4><label class="form-label">Key Tasks</label></h4>
+                <textarea class="form-control" v-model='key_tasks' placeholder="Type in key tasks"  @input ="countkey_tasks(this.numkey_tasks)" rows = '3'></textarea>
+                <div style="float: right;"> 
+                    <span v-if ='numkey_tasks>=0'>{{numkey_tasks}}</span>  
+                    <span v-else style="color:red">Exceed Word Limit: {{225-numkey_tasks}}/225</span> 
                 </div>
 
-                <div class="col-lg-12 col-md-12">
-                    <h4><label class="form-label">Key Tasks</label></h4>
-                    <textarea class="form-control" v-model='key_tasks' placeholder="Type in key tasks"  @input ="countkey_tasks(this.numkey_tasks)" rows = '3'></textarea>
-                    <div style="float: right;"> 
-                        <span v-if ='numkey_tasks>=0'>{{numkey_tasks}}</span>  
-                        <span v-else style="color:red">Exceed Word Limit: {{225-numkey_tasks}}/225</span> 
-                    </div>
-
-                </div>
-              </form>
-        </div>
-
-
+            </div>
+            </form>
     </div>
 </template>
 
 <style scoped>
-#Header {
-            padding-left: 100px;
-            margin: auto;
-            font-family: 'Inter';
-            font-weight: 600;
-            font-size: 3.5vw;
-            line-height: 61px;
-            text-align: center;
-            letter-spacing: 0.01em;
-            color: #FFFFFF;
-        }
-        #logo {
-            position: absolute;
-            left: 77px;
-            top: 35.2px;
-            width: 51.35px;
-            height: 34.8px;
-        }
-        .align-left {
-        text-align: left;
-        }
+/* 
+#Header  && #logo under main.css
+*/
+
 </style>

@@ -1,9 +1,20 @@
 <script setup>
-import TheWelcome from "../components/TheWelcome.vue";
+// import TheWelcome from "../components/TheWelcome.vue";
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="main">
+    <h1>hi :D</h1>
+    <!-- <TheWelcome /> -->
+  </div>
 </template>
+
+<!-- <style>
+@media (min-width: 1024px) {
+  .main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
+</style> -->
