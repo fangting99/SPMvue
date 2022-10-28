@@ -30,6 +30,7 @@ export default {
         const allRoleUrl = 'http://localhost/CopySPM/db/getAllRoles.php'
         axios.get(allRoleUrl).then(response => {
             var allRole = response.data
+            console.log(allRole)
 
             for (let i=0;i<allRole.length;i++){
                 //currently by checking Role_ID + first Skill_ID

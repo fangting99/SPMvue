@@ -21,7 +21,7 @@ export default {
             const allRoleUrl = 'http://localhost/CopySPM/db/getAllRoles.php'
             axios.get(allRoleUrl).then(response => {
                 var allRole = response.data
-                console.log('all Role', allRole)
+                console.log('all role', allRole)
 
                 const map = new Map();
 
@@ -57,8 +57,8 @@ export default {
                 }
 
                 console.log('final result', this.roleDict)
+                return this.roleDict;
             })
-            return this.roleDict;
         },
 
         getSkill() {
@@ -194,11 +194,9 @@ export default {
                     <div class="row my-2">
                         <h4 class="col-8 col-lg-7 col-md-6 col-sm-1 card-title">{{role.roleName}}</h4>
                         <!-- edit button -->
-                        <span class="col-lg-2 col-md col-sm-2"><button id="editButton"
-                                @click="getDataSend(role.id, role.skill)">Edit</button></span>
+                        <span class="col-lg-2 col-md col-sm-2"><button id="editButton" @click="getDataSend(role.id, role.skill)">Edit</button></span>
                         <!-- delete button -->
-                        <span class="col-lg col-md col-sm-2"><button id="deleteButton"
-                                @click="SoftDeleteRole(role.id)">Delete</button></span>
+                        <span class="col-lg col-md col-sm-2"><button id="deleteButton" @click="SoftDeleteRole(role.id)">Delete</button></span>
                     </div>
                     <div class="row my-2">
                         <div class="col-lg-3 col-md col-sm badge rounded-pill badges ms-2 pe-3 text-uppercase">
