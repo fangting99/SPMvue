@@ -7,14 +7,19 @@ describe("HelloWorld", () => {
   it("renders properly", () => {
     const wrapper = mount(HelloWorld,{
       propsData: {
-        Department: ''
+        Department: '',
+        RoleName:'hjjh',
+        skills_required:'00007',
+        // error: 'Invalid Role Name'
       }
     
     })
-    const byId = wrapper.find('#submitBTN')
-    //CLICK id submitBTN
-    expect(byId.element.id).toBe('submitBTN')    
-    expect(wrapper.vm.Department).toBe('bar');
+    // const byId = wrapper.find('#submitBTN')
+    // //CLICK id submitBTN
+    // expect(byId.element.id).toBe('submitBTN')    
+    //can call for data(parameter)
+    wrapper.vm.getErrorMessage()
+    expect(wrapper.vm.errorm).toBe('Invalid Role Name');
   
   });
 });

@@ -6,6 +6,18 @@ export default {
         Department: {
             type: String,
             default: ""
+        },
+        RoleName: {
+            type: String,
+            default: ""
+        },
+        skills_required: {
+            type: String,
+            default: "00007"
+        },
+        error: {
+            type: String,
+            default: ""
         }
     
     },
@@ -13,11 +25,12 @@ export default {
         return{
             Role_Status: "", 
             Role_ID: '',
-            Role_Name:'',
-            Role_Status:'',
+            Role_Name:this.RoleName,
+            Role_Status:'Active',
             role_desc: '',
             key_tasks: '',
             error_message:[],
+            errorm: this.error,
             error_in_html:'',
             AllUniqueRoles:[],
             numRoleName:50,
@@ -25,7 +38,7 @@ export default {
             numrole_desc:225,
             numkey_tasks:225,
                 // //modify in sprint 3, will hardcode for the skill (for sprint 2)
-    skills_required:'00007'
+            // skills_required:'00007'
 
         }
     },
@@ -105,6 +118,7 @@ export default {
             // if user didnt input for role name
             if (this.Role_Name ==''){
                 this.error_message.push('Invalid Role Name')
+                this.errorm = 'Invalid Role Name'
             }else{
                 //if user did input the role name but the char not from 3-50
                 if (this.numRoleName<0){
@@ -117,6 +131,7 @@ export default {
             // if user didnt select for department
             if (this.Department == ''){
                 this.error_message.push('You must input the department for the role')
+                this.errorm = 'You must input the department for the role'
             }
 
             // if user didnt assign skill to role
@@ -143,7 +158,7 @@ export default {
             if (index != -1 ){
                 this.error_message.push('Duplicate role name, only unique role are allowed!')
             }
-
+            console.log(this.errorm);
             return this.error_message
         },
         changeErrorMsgintoHTML(){
