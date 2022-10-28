@@ -1,9 +1,10 @@
 <script setup>
-// import TheWelcome from "../components/TheWelcome.vue";
+import AboutView from "./AboutView.vue";
 </script>
 
 <template>
   <div class="main">
+   <AboutView />
     <h1>hi :D</h1>
     <!-- <TheWelcome /> -->
   </div>
