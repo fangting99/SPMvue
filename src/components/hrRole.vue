@@ -18,7 +18,7 @@ export default {
     methods: {
 
         getAllRole() {
-            const allRoleUrl = 'http://localhost/CopySPM/db/getAllRoles.php'
+            const allRoleUrl = '/db/getAllRoles.php'
             axios.get(allRoleUrl).then(response => {
                 var allRole = response.data
                 console.log('all role', allRole)
@@ -62,7 +62,7 @@ export default {
         },
 
         getSkill() {
-            const skillUrl = 'http://localhost/CopySPM/db/getSkills.php'
+            const skillUrl = '/db/getSkills.php'
             axios.get(skillUrl).then(response => {
                 var allSkill = response.data
                 // console.log(allSkill)
@@ -109,7 +109,7 @@ export default {
             })
                 .then((result) => {
                     if (result.isConfirmed) {
-                        var url = "http://localhost/CopySPM/db/SoftDeleteRole.php"
+                        var url = "/public/db/SoftDeleteRole.php"
                         const data = { LJRole_ID: id }
                         axios.get(url, {
                             params: data

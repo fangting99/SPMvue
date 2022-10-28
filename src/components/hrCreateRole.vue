@@ -43,7 +43,7 @@ export default {
         }
     },
     created(){
-        const getAllRoles = 'http://localhost/CopySPM/db/getAllRoles.php'
+        const getAllRoles = '/db/getAllRoles.php'
         axios.get(getAllRoles)
             .then(response => {
                 var AllRoles = response.data;
@@ -75,7 +75,7 @@ export default {
             this.changeErrorMsgintoHTML();
             //happy path in creating skill, no null value, no error msg
             if (this.Role_Name !='' && this.Department!= ''  && this.error_message.length == 0) {
-                const createLJRole = 'http://localhost/CopySPM/db/createLJRole.php'
+                const createLJRole = '/db/createLJRole.php'
                 const data = {
                     LJRole_ID: this.Role_ID,
                     LJRole_Name: this.Role_Name, 

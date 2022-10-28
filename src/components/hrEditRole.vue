@@ -27,7 +27,7 @@ export default {
         this.Role_ID = datalist[0]
         this.Skill_ID= datalist[1]
 
-        const allRoleUrl = 'http://localhost/CopySPM/db/getAllRoles.php'
+        const allRoleUrl = '/db/getAllRoles.php'
         axios.get(allRoleUrl).then(response => {
             var allRole = response.data
             console.log(allRole)
@@ -77,7 +77,7 @@ export default {
                         width: 'auto',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            const UpdateUrl = 'http://localhost/CopySPM/db/updateLJRole.php'
+                            const UpdateUrl = '/db/updateLJRole.php'
                             const data = {
                                 LJRole_ID: this.Role_ID,
                                 LJRole_Name: this.Role_Name, 
