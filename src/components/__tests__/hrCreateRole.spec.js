@@ -20,6 +20,6 @@ describe("hrCreateRole", () => {
     //can call for data(parameter)
     wrapper.vm.getErrorMessage()
     expect(wrapper.vm.errorm).toBe('Invalid Role Name');
-  
+  //dhsjdgfkgfks
   });
 });
